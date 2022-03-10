@@ -27,24 +27,11 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Menu',
                 items: [
-                    {label: 'Item Normal', icon: 'pi pi-fw pi-bookmark', routerLink: ['/']},
                     {
-                        label: 'Submenu 1', icon: 'pi pi-fw pi-bookmark',
+                        label: 'Configuración', icon: 'pi pi-fw pi-bookmark',
                         items: [
-                            {
-                                label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
-                                items: [
-                                    {label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark', routerLink: ['/']},
-                                    {label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark'},
-                                    {label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark'},
-                                ]
-                            },
-                            {
-                                label: 'Submenu 1.2', icon: 'pi pi-fw pi-bookmark',
-                                items: [
-                                    {label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-bookmark'}
-                                ]
-                            },
+                            {label: 'Aplicaciones', icon: 'pi pi-fw pi-bookmark', routerLink: ['/config/apps']},
+                            {label: 'Parametros', icon: 'pi pi-fw pi-bookmark', routerLink: ['/config/pars']},
                         ]
                     },
                 ]

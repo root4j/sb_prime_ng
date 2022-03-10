@@ -6,6 +6,9 @@ import { CrudComponent } from './components/crud/crud.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+import { AppsComponent } from './business/components/apps/apps.component';
+import { ParsComponent } from './business/components/pars/pars.component';
+
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -14,6 +17,8 @@ import { AccessComponent } from './components/access/access.component';
                 children: [
                     {path: '', component: DashboardComponent},
                     {path: 'pages/crud', component: CrudComponent},
+                    {path: 'config/apps', component: AppsComponent},
+                    {path: 'config/pars', component: ParsComponent},
                 ],
             },
             {path:'pages/error', component: ErrorComponent},
