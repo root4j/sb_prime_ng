@@ -1,4 +1,12 @@
 /**
+ * Llaves
+ */
+export interface KeyValue {
+    key?: any;
+    name?: string;
+}
+
+/**
  * Auditoria
  */
 export interface Auditoria {

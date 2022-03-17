@@ -9,7 +9,7 @@ export class Crud<T> {
     constructor(
         protected readonly http: HttpClient,
         protected readonly uriComplement: string,
-        protected readonly baseUrl: string = 'http://localhost:8080/'
+        protected readonly baseUrl: string = '/'
     ) { }
 
     create(body: T): Observable<T> {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { catchError } from 'rxjs';
-import { Parametro } from '../../models/uninorte';
-import { ParametroService } from '../../services/uninorte.service';
+import { Aplicacion, KeyValue, Parametro } from '../../models/uninorte';
+import { AplicacionService, ParametroService } from '../../services/uninorte.service';
 
 @Component({
     templateUrl: './pars.component.html',
@@ -23,16 +23,35 @@ export class ParsComponent implements OnInit {
     lifeMessage: number = 5000;
     isEdit: boolean = false;
 
-    constructor(private mainService: ParametroService, private messageService: MessageService) {}
+    apps: Aplicacion[];
+    selectedApp: Aplicacion;
+    tipos: KeyValue[];
+    selectedTipo: KeyValue;
+
+    constructor(private mainService: ParametroService, private appService: AplicacionService, private messageService: MessageService) {}
 
     ngOnInit() {
         this.readAll();
+        this.readAllApps();
+        this.fillTipos();
 
         this.cols = [
             {field: 'id', header: 'Id'},
             {field: 'app.descripcion', header: 'Aplicacion'},
             {field: 'descripcion', header: 'Descripción'}
         ];
+    }
+
+    fillTipos(): void {
+        this.tipos = [
+            {key: 'C', name: 'Caracter'},
+            {key: 'N', name: 'Numerico'},
+            {key: 'D', name: 'Fecha'}
+        ];
+    } 
+
+    readAllApps(): void {
+        this.appService.readAll().subscribe(response => this.apps = response);
     }
 
     readAll(): void {
@@ -94,6 +113,7 @@ export class ParsComponent implements OnInit {
     save(): void {
         this.submitted = true;
         try {
+            this.entity.tipo = this.selectedTipo.key;
             if(this.isEdit) {
                 this.entity.fechaActividad = new Date();
                 this.update(this.entity.id, this.entity);
